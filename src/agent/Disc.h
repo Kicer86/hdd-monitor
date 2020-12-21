@@ -5,7 +5,7 @@
 class Disc
 {
 public:
-    Disc();
+    Disc() = default;
     Disc(const std::string& _caption, const std::string& _deviceId, const std::string& _model,  const int& _partitions, const long long& _size);
 
 private:
