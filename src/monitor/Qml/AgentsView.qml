@@ -27,31 +27,36 @@ Item {
             }
         }
 
-    ColumnLayout {
+        Column {
+            id: agentDetails
 
-        Button {
-            id: agentDetailsBackBtn
-            visible: false
-            text: "<<"
-            onClicked: {
-                switchAgentsListViewAndAgentDetailsView()
+            anchors.fill: parent
+            anchors.leftMargin: label.width
+
+            clip: true
+            spacing: 2
+
+            Behavior on anchors.leftMargin { PropertyAnimation {} }
+
+            Button {
+                id: agentDetailsBackBtn
+                text: "<<"
+                onClicked: {
+                    switchAgentsListViewAndAgentDetailsView()
+                }
+            }
+
+            ComboBox {
+                model: ["Disk1", "Disk2", "Disk3"]
             }
         }
-
-        ComboBox {
-            id: agentDetailsDisksComboBox
-            width: label.width - 25
-            visible: false
-            model: ["Disk1", "Disk2", "Disk3"]
-        }
     }
-    }
-    
 
     function switchAgentsListViewAndAgentDetailsView() {
-        agentsList.visible = !agentsList.visible
-        agentDetailsBackBtn.visible = !agentDetailsBackBtn.visible
-        agentDetailsDisksComboBox.visible = !agentDetailsDisksComboBox.visible
+        if (agentDetails.anchors.leftMargin === 0)
+            agentDetails.anchors.leftMargin = label.width;
+        else
+            agentDetails.anchors.leftMargin = 0;
     }
 
 }
@@ -59,6 +64,6 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;height:237;width:640}
+    D{i:0;autoSize:true;formeditorZoom:0.5;height:480;width:640}D{i:7}
 }
 ##^##*/
