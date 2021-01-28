@@ -17,6 +17,8 @@ Item {
             id: agentsList
             anchors.fill: parent
 
+            Behavior on anchors.leftMargin { PropertyAnimation {} }
+
             delegate: AgentDelegate {
                 MouseArea{
                     anchors.fill: parent
@@ -53,10 +55,13 @@ Item {
     }
 
     function switchAgentsListViewAndAgentDetailsView() {
-        if (agentDetails.anchors.leftMargin === 0)
+        if (agentDetails.anchors.leftMargin === 0) {
+            agentsList.anchors.leftMargin = 0;
             agentDetails.anchors.leftMargin = label.width;
-        else
+        } else {
+            agentsList.anchors.leftMargin = -label.width;
             agentDetails.anchors.leftMargin = 0;
+        }
     }
 
 }
