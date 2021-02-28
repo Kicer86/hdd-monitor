@@ -22,7 +22,7 @@ GeneralHealth::Health LinGeneralAnalyzer::GetStatus(const Disk& disk)
 }
 
 
-std::string LinGeneralAnalyzer::GetRawData(const Disk& disk)
+LinGeneralAnalyzer::RawData LinGeneralAnalyzer::GetRawData(const Disk& disk)
 {
     std::string result;
 

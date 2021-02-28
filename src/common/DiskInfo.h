@@ -22,7 +22,7 @@ public:
 		m_name = _name;
 	}
 
-	std::string GetName()
+	std::string GetName() const
 	{
 		return m_name;
 	};
@@ -32,7 +32,7 @@ public:
 		m_health = _health;
 	}
 
-	GeneralHealth::Health GetHealth()
+	GeneralHealth::Health GetHealth() const
 	{
 		return m_health;
 	}
@@ -73,3 +73,4 @@ private:
 
 };
 
+Q_DECLARE_METATYPE(DiskInfo)
