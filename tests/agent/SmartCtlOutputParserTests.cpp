@@ -106,23 +106,23 @@ TEST(SmartCtlOutputParserTest, fullOutput)
         )"
     );
 
-    EXPECT_THAT(result, UnorderedElementsAre(
-        std::pair<std::string, std::string>{"Calibration_Retry_Count", "0"  },
-        std::pair<std::string, std::string>{"Current_Pending_Sector", "0"   },
-        std::pair<std::string, std::string>{"Load_Cycle_Count", "1295"      },
-        std::pair<std::string, std::string>{"Multi_Zone_Error_Rate", "0"    },
-        std::pair<std::string, std::string>{"Offline_Uncorrectable", "0"    },
-        std::pair<std::string, std::string>{"Power-Off_Retract_Count", "30" },
-        std::pair<std::string, std::string>{"Power_Cycle_Count", "1138"     },
-        std::pair<std::string, std::string>{"Power_On_Hours", "12128"       },
-        std::pair<std::string, std::string>{"Raw_Read_Error_Rate", "0"      },
-        std::pair<std::string, std::string>{"Reallocated_Event_Count", "0"  },
-        std::pair<std::string, std::string>{"Reallocated_Sector_Ct", "0"    },
-        std::pair<std::string, std::string>{"Seek_Error_Rate", "0"          },
-        std::pair<std::string, std::string>{"Spin_Retry_Count", "0"         },
-        std::pair<std::string, std::string>{"Spin_Up_Time", "2408"          },
-        std::pair<std::string, std::string>{"Start_Stop_Count", "1140"      },
-        std::pair<std::string, std::string>{"Temperature_Celsius", "32"     },
-        std::pair<std::string, std::string>{"UDMA_CRC_Error_Count", "0"     }
+    EXPECT_THAT(result.smartData, UnorderedElementsAre(
+        std::pair<unsigned char, SmartData::AttrData>{1,   SmartData::AttrData{0, 200, 0, 0     ,0} },
+        std::pair<unsigned char, SmartData::AttrData>{3,   SmartData::AttrData{0, 171, 0, 2408  ,0} },
+        std::pair<unsigned char, SmartData::AttrData>{4,   SmartData::AttrData{0,  99, 0, 1140  ,0} },
+        std::pair<unsigned char, SmartData::AttrData>{5,   SmartData::AttrData{0, 200, 0, 0     ,0} },
+        std::pair<unsigned char, SmartData::AttrData>{7,   SmartData::AttrData{0, 200, 0, 0     ,0} },
+        std::pair<unsigned char, SmartData::AttrData>{9,   SmartData::AttrData{0,  84, 0, 12128 ,0} },
+        std::pair<unsigned char, SmartData::AttrData>{10,  SmartData::AttrData{0, 100, 0, 0     ,0} },
+        std::pair<unsigned char, SmartData::AttrData>{11,  SmartData::AttrData{0, 100, 0, 0     ,0} },
+        std::pair<unsigned char, SmartData::AttrData>{12,  SmartData::AttrData{0,  99, 0, 1138  ,0} },
+        std::pair<unsigned char, SmartData::AttrData>{192, SmartData::AttrData{0, 200, 0, 30    ,0} },
+        std::pair<unsigned char, SmartData::AttrData>{193, SmartData::AttrData{0, 200, 0, 1295  ,0} },
+        std::pair<unsigned char, SmartData::AttrData>{194, SmartData::AttrData{0, 111, 0, 32    ,0} },
+        std::pair<unsigned char, SmartData::AttrData>{196, SmartData::AttrData{0, 200, 0, 0     ,0} },
+        std::pair<unsigned char, SmartData::AttrData>{197, SmartData::AttrData{0, 200, 0, 0     ,0} },
+        std::pair<unsigned char, SmartData::AttrData>{198, SmartData::AttrData{0, 200, 0, 0     ,0} },
+        std::pair<unsigned char, SmartData::AttrData>{199, SmartData::AttrData{0, 200, 0, 0     ,0} },
+        std::pair<unsigned char, SmartData::AttrData>{200, SmartData::AttrData{0, 200, 0, 0     ,0} }
     ));
 }

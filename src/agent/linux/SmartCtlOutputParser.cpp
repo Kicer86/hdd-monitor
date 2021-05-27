@@ -33,9 +33,9 @@ namespace SmartCtlOutputParser
             return attributes;
         }
 
-        std::map<std::string, std::string> parseRawTable(const QStringList& table)
+        SmartData parseRawTable(const QStringList& table)
         {
-            std::map<std::string, std::string> attributes;
+            SmartData smartData;
 
             for(const QString& rawAttribute: table)
             {
@@ -44,23 +44,33 @@ namespace SmartCtlOutputParser
 
                 if (rawAttributeSplitted.size() == 10)  // 10 columns expected (ID# ATTRIBUTE_NAME FLAG VALUE WORST THRESH TYPE UPDATED WHEN_FAILED RAW_VALUE)
                 {
+                    const QString& id = rawAttributeSplitted[0];        // ID#
                     const QString& name = rawAttributeSplitted[1];      // ATTRIBUTE_NAME
+                    const QString& value = rawAttributeSplitted[3];     // VALUE
                     const QString& rawValue = rawAttributeSplitted[9];  // RAW_VALUE
 
-                    attributes.emplace(name.toStdString(),
-                                       rawValue.toStdString());
+                    smartData.smartData.emplace(
+                        id.toUInt(),
+                        SmartData::AttrData {
+                            0,
+                            value.toInt(),
+                            0,
+                            rawValue.toInt(),
+                            0
+                        }
+                    );
                 }
             }
 
-            return attributes;
+            return smartData;
         }
     }
 
-    std::map<std::string, std::string> parse(const QByteArray& smartCtlOutput)
+    SmartData parse(const QByteArray& smartCtlOutput)
     {
         const auto cleanLines = ParsersUtils::clean(smartCtlOutput);
         const auto attributeLines = smartAttributes(cleanLines);
-        const std::map<std::string, std::string> table = parseRawTable(attributeLines);
+        const auto table = parseRawTable(attributeLines);
 
         return table;
     }

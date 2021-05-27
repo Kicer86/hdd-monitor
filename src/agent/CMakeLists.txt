@@ -10,8 +10,7 @@ ADD_EXECUTABLE( agent
 				SmartReader.h
                 Server.h
                 Server.cpp
-                
-                
+
                 DiscStatusCalculator.h
                 DiscStatusCalculator.cpp
                 IDiskCollector.h
@@ -73,6 +72,8 @@ elseif(UNIX AND NOT APPLE)
             linux/DmesgParser.h
             linux/IPartitionsManager.h
             linux/LinuxSmartReader.cpp
+            linux/LinSmartAnalyzer.cpp
+            linux/LinSmartAnalyzer.h
             linux/LinGeneralAnalyzer.h
             linux/LinGeneralAnalyzer.cpp
             linux/LinSystemUtilitiesFactory.cpp
