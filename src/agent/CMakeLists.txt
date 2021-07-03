@@ -83,7 +83,6 @@ elseif(UNIX AND NOT APPLE)
             linux/LsblkOutputParser.h
             linux/SmartCtlOutputParser.cpp
             linux/SmartCtlOutputParser.h
-            linux/LinSmartAnalyzer.h
     )
 elseif(APPLE)
     # use SMART reader from linux
@@ -93,6 +92,8 @@ elseif(APPLE)
             linux/DmesgParser.h
             linux/IPartitionsManager.h
             linux/LinuxSmartReader.cpp
+            linux/LinSmartAnalyzer.cpp
+            linux/LinSmartAnalyzer.h
             linux/LinGeneralAnalyzer.h
             linux/LinGeneralAnalyzer.cpp
             linux/LinSystemUtilitiesFactory.cpp
