@@ -3,11 +3,11 @@
 #include <map>
 #include <QString>
 
-typedef unsigned char SmartAttribute;
-
 class SmartData
 {
-    enum SmartAttributeType : unsigned char
+
+public:
+    enum SmartAttribute
     {
         ReadErrorRate = 0x01,
         ThroughputPerformance = 0x02,
@@ -72,7 +72,6 @@ class SmartData
         FreeFallProtection = 0xFE,
     };
 
-public:
     struct AttrData
     {
         int value; 

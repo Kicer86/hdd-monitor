@@ -45,13 +45,12 @@ namespace SmartCtlOutputParser
                 if (rawAttributeSplitted.size() == 10)  // 10 columns expected (ID# ATTRIBUTE_NAME FLAG VALUE WORST THRESH TYPE UPDATED WHEN_FAILED RAW_VALUE)
                 {
                     const QString& id = rawAttributeSplitted[0];        // ID#
-                    const QString& name = rawAttributeSplitted[1];      // ATTRIBUTE_NAME
                     const QString& value = rawAttributeSplitted[3];     // VALUE
                     const QString& worst = rawAttributeSplitted[4];     // WORST
                     const QString& rawValue = rawAttributeSplitted[9];  // RAW_VALUE
 
                     smartData.smartData.emplace(
-                        id.toUInt(),
+                        static_cast<SmartData::SmartAttribute>(id.toUInt()),
                         SmartData::AttrData {
                             value.toInt(),
                             worst.toInt(),
